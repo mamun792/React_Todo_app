@@ -15,7 +15,7 @@ function App() {
   const GetData = async () => {
    try {
      const responce = await fetch(
-       "https://jsonplaceholder.typicode.com/users"
+       "https://trusting-gigantic-chili.glitch.me/tasks"
      );
      if (!responce.ok) {
        throw new Error(`HTTP error! Status: ${responce.status}`);
@@ -33,8 +33,8 @@ function App() {
       className="wrapper bg-gradient-to-t from-gray-900 to-teal-900 min-h-screen
     text-gray-100 text-xl flex flex-col py-10"
     >
-      <Header />
-      <AddTouch />
+      <Header/>
+      <AddTouch  tasks={tasks} setTask={setTasks}/>
       <TasksList  tasks={tasks} />
 
       <Footer />

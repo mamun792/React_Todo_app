@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function AddTouch() {
+export default function AddTouch({tasks, taskP }) {
   const [task, setTask] = React.useState("");
   const TaskRef = React.useRef(null);
 
@@ -8,7 +8,6 @@ export default function AddTouch() {
     e.preventDefault();
     // post task to the server
     taskPostin(task);
- 
 
     TaskRef.current.blur();
     setTask("");
@@ -16,33 +15,29 @@ export default function AddTouch() {
 
   // add taskposting function
 
-  const taskPostin = async (name) => {
+  const taskPostin = async (text) => {
     try {
-       
       const responce = await fetch(
-        "https://jsonplaceholder.typicode.com/users",
+        "https://trusting-gigantic-chili.glitch.me/tasks",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ name }),
+          body: JSON.stringify({ text }),
         }
       );
 
       if (!responce.ok) {
         throw new Error(`HTTP error! Status: ${responce.status}`);
       }
-  
 
       const data = await responce.json();
-      console.log(data);
+      taskP([...tasks, data]);
     } catch (error) {
       console.log(error);
     }
   };
-
-
 
   return (
     <form onSubmit={taskPerform}>

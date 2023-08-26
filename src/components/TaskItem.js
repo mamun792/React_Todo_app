@@ -7,7 +7,7 @@ export default function TaskItem({ task }) {
         <span className=" accent-teal-400 ">
           <input type="checkbox"  className="mr-2"></input>
         </span>
-        <p className=" group-hover:text-teal-400">{task.name}</p>
+        <p className=" group-hover:text-teal-400">{task.text}</p>
       </div>
 
       <div className="task-item-right flex gap-3">
