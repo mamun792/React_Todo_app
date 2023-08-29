@@ -17,6 +17,7 @@ function App() {
 
   const [editText, setEditText] = useState("");
   const [toggleEdit, settoggleEdit] = useState(true);
+  
 
   useEffect(() => {
     GetData();
@@ -140,6 +141,7 @@ function App() {
             editText={editText}
             setEditText={setEditText}
             handelSubmiter={handerEditInput}
+            
           />
           <Footer />
         </editContext.Provider>

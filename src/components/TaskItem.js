@@ -3,27 +3,40 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { useContext } from "react";
 import { deleteContext } from "../App";
 import { editContext } from "../App";
+import { useState } from "react";
 
 export default function TaskItem({
   task,
   editText,
   setEditText,
   handelSubmiter,
+  
 }) {
   const HandleDelete = useContext(deleteContext);
   const handleEdits = useContext(editContext);
+  const [isChecked, setisChecked] = useState(false);
+
+const toggleChecked = () => {
+  setisChecked(!isChecked)
+
+}
+
 
   return (
     <div className="task-item flex justify-between items-center bg-gray-800 p-5 rounded hover:bg-gradient-to-t hover:from-teal-600 hover:to-gray-800 group">
       <div className="task-item-left flex">
         <span className=" accent-teal-400 ">
-          <input type="checkbox" className="mr-2"></input>
+          <input type="checkbox" className={`mr-2 ${isChecked ? 'line-through' :''}`} checked={isChecked} onChange={()=>toggleChecked()}></input>
+          
+        
+      
+
         </span>
         {/* // <p className=" group-hover:text-teal-400">{task.text}</p> */}
 
         {task.isEditable && (
           <form onSubmit={(e)=>handelSubmiter(e,task.id)}>
-            <input type="text" className=" bg-transparent outline-none border-b-2 border-gray-400 py-2 px-5" value={editText} onChange={(e)=>setEditText(e.target.value)}/>
+            <input type="text" className="bg-transparent outline-none border-b-2 border-gray-400 py-2 px-5 "   value={editText} onChange={(e)=>setEditText(e.target.value)}/>
            
           </form>
         )}

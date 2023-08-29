@@ -7,6 +7,7 @@ export default function TasksList({
   editText,
   setEditText,
    handelSubmiter,
+   
 }) {
   return (
     <div className="taskItme flex flex-col gap-2 bg-gray-900 mx-auto container p-10">
@@ -23,6 +24,7 @@ export default function TasksList({
           editText={editText}
           setEditText={setEditText}
           handelSubmiter={handelSubmiter}
+         
         />
       ))}
     </div>
